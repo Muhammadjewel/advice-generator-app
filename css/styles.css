@@ -1,3 +1,21 @@
+/* CUSTOM-PROPS */
+:root {
+  --dark-blue: #202733;
+  --dark-grayish-blue: #313a48;
+  --grayish-blue: #4f5d74;
+  --light-cyan: #cee3e9;
+  --neon-green: #53ffaa;
+}
+
+:root[data-theme="dark"] {
+  --color-bg-body: var(--dark-blue);
+  --color-bg-card: var(--dark-grayish-blue);
+  --color-border: var(--grayish-blue);
+  --color-text-accent: var(--neon-green);
+  --color-text: var(--light-cyan);
+}
+
+
 /* GLOBAL */
 body {
   display: flex;

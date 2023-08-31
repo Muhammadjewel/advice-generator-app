@@ -11,8 +11,8 @@
   --color-bg-body: var(--dark-blue);
   --color-bg-card: var(--dark-grayish-blue);
   --color-border: var(--grayish-blue);
-  --color-text-accent: var(--neon-green);
   --color-text: var(--light-cyan);
+  --color-primary: var(--neon-green);
 }
 
 
@@ -20,7 +20,7 @@
 body {
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 16px;
   margin: 0;
   font-family: "Manrope", "Arial", sans-serif;
   text-align: center;
@@ -28,12 +28,17 @@ body {
   font-weight: 800;
   line-height: normal;
   letter-spacing: -0.01606em;
-  background-color: #fff;
-  color: #222;
+  background-color: var(--color-bg-body);
+  color: var(--color-text);
 }
 
 img {
   height: auto;
+}
+
+*:focus {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
 }
 
 
@@ -92,6 +97,84 @@ select:-webkit-autofill:focus {
   flex-grow: 1;
 }
 
+
+/* CARD */
+.card {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 33.75rem;
+  padding: 40px 24px 64px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: var(--color-bg-card);
+  text-align: center;
+  box-shadow: 30px 50px 80px 0px rgba(0, 0, 0, 0.10);
+}
+
+.card__heading {
+  margin-bottom: 24px;
+  font-size: 0.6875rem;
+  line-height: normal;
+  letter-spacing: 0.21606em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.card__quote {
+  margin-bottom: 24px;
+}
+
+.card__divider {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.card__divider::before,
+.card__divider::after {
+  height: 1px;
+  background-color: var(--color-border);
+  content: "";
+}
+
+
+/* DICE-BUTTON */
+.dice-button {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -32px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  line-height: 1;
+  background-color: var(--color-primary);
+  cursor: pointer;
+  transition: opacity ease 0.4s, filter ease 0.4s;
+}
+
+.dice-button:hover {
+  filter: drop-shadow(0px 0px 40px #53ffaa);
+}
+
+.dice-button:active {
+  opacity: 0.6;
+}
+
+.dice-button__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (   min--moz-device-pixel-ratio: 2),
@@ -100,4 +183,25 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
 
+}
+
+
+@media only screen and (min-width: 48em) {
+  body {
+    font-size: 1.75rem;
+    letter-spacing: -0.01875em;
+  }
+
+  .card {
+    padding: 48px 48px 72px;
+  }
+
+  .card__heading {
+    font-size: 0.8125rem;
+    letter-spacing: 0.25538em;
+  }
+
+  .card__quote {
+    margin-bottom: 40px;
+  }
 }

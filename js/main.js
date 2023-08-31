@@ -6,7 +6,7 @@ function init () {
   // Functions
   function displayAdvice (advice) {
     elCardIndex.textContent = advice.slip.id;
-    elCardQuoteText.textContent = advice.slip.advice;
+    elCardQuoteText.textContent = `"${advice.slip.advice}`;
   }
 
   async function getAdvice () {

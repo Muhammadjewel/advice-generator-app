@@ -140,6 +140,16 @@ select:-webkit-autofill:focus {
   content: "";
 }
 
+.card__error {
+  padding: 16px;
+  margin-top: 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: rgb(237, 200, 200);
+  color: #7d0000;
+}
+
 
 /* DICE-BUTTON */
 .dice-button {

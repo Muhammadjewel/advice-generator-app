@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advice generator app</title>
 
+  <script>
+    let localSTheme = localStorage.getItem('theme');
+    let themeToSet = localSTheme;
+
+    if (!localSTheme) {
+      themeToSet = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    document.documentElement.setAttribute('data-theme', themeToSet);
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +27,8 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+  <button class="theme-toggler" type="button">Toggle theme</button>
 
   <main class="card">
     <h1 class="card__heading">Advice #<span class="card__index">117</span></h1>

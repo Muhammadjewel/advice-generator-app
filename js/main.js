@@ -1,9 +1,13 @@
+const THEME_TOGGLER_BUTTON = '.theme-toggler';
 const CURRENT_ADVICE = {
   id: 117,
   advice: `“It is easy to sit up and take notice, what's difficult is getting up and taking action.”`
 };
 
 function init () {
+  // Get theme toggler button
+  const elThemeTogglerButton = document.querySelector(THEME_TOGGLER_BUTTON);
+
   // Get elements that are used in JS manipulation
   const elGenerateAdviceButton = document.querySelector('#generate-advice-button');
   const elCardIndex = document.querySelector('.card__index');
@@ -55,12 +59,23 @@ function init () {
 
 
   // DOM handlers
+  function switchTheme () {
+    const elRoot = document.documentElement
+    let dataTheme = elRoot.getAttribute('data-theme');
+
+    let newTheme = (dataTheme === 'light') ? 'dark' : 'light';
+
+    elRoot.setAttribute('data-theme', newTheme);
+
+    localStorage.setItem('theme', newTheme);
+  }
+
   function generateAdviceButtonClickHandler () {
     getAdvice();
   }
 
   function documentKeyUpHandler (evt) {
-    if (evt.code !== "Space" || document.activeElement === elGenerateAdviceButton) {
+    if (evt.code !== "Space" || document.activeElement === elGenerateAdviceButton || document.activeElement === elThemeTogglerButton) {
       return;
     }
 
@@ -69,6 +84,10 @@ function init () {
 
 
   // Event listeners
+  if (elThemeTogglerButton) {
+    elThemeTogglerButton.addEventListener('click', switchTheme);
+  }
+
   if (elGenerateAdviceButton) {
     elGenerateAdviceButton.addEventListener('click', generateAdviceButtonClickHandler);
   }

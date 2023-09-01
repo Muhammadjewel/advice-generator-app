@@ -13,7 +13,7 @@ function init () {
   // Functions
   function setCurrentAdvice (advice) {
     CURRENT_ADVICE.id = advice.slip.id;
-    CURRENT_ADVICE.advice = `"${advice.slip.advice}`;
+    CURRENT_ADVICE.advice = `"${advice.slip.advice}"`;
   }
 
   function setLoadingState() {
